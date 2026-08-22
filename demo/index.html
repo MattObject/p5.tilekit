@@ -1,0 +1,66 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>p5.tilekit — demo (vector crisp)</title>
+<script src="https://cdn.jsdelivr.net/npm/p5@2.3.1/lib/p5.min.js"></script>
+<script src="src/p5.tilekit.js" onerror="this.onerror=null;this.src='../src/p5.tilekit.js'"></script>
+<style>
+  :root{--bg:#f6f5f1}
+  body{margin:0;font:14px/1.4 ui-sans-serif,system-ui;background:var(--bg)}
+  #stage{display:grid;place-items:center;padding:20px;padding-top:56px}
+  #stage canvas{border:1px solid #ddd;box-shadow:0 2px 16px rgba(0,0,0,.08)}
+</style>
+<main id="stage"></main>
+<script>
+function drawPoster(g){
+  const W = 900, H = 700, pad = 36;
+  g.background(247,246,242);
+  g.stroke(17); g.strokeWeight(1.2);
+  g.line(pad, pad, W-pad, pad);
+  g.line(pad, pad+18, W-pad, pad+18);
+  g.strokeWeight(.6);
+  for(let x=pad;x<W-pad;x+=28) g.line(x, pad+28, x, H-pad-72);
+  g.noStroke();
+  g.fill(225,36,28); g.rect(pad+14, pad+40, 210, 210, 1);
+  g.fill(16); g.rect(pad+238, pad+40, 162, 162);
+  g.fill(240,198,8); g.ellipse(pad+520, pad+124, 154, 154);
+  g.fill(16, 24); g.ellipse(pad+520+18, pad+124+10, 154, 154);
+  g.noFill(); g.stroke(16); g.strokeWeight(2.2);
+  g.bezier(pad+14, 300, pad+120, 260, pad+260, 520, pad+420, 380);
+  g.bezier(pad+420, 380, pad+560, 270, pad+640, 520, W-pad-14, 340);
+  g.strokeWeight(.9);
+  g.bezier(pad+14, 316, pad+120, 276, pad+260, 536, pad+420, 396);
+  g.bezier(pad+420, 396, pad+560, 286, pad+640, 536, W-pad-14, 356);
+  g.noStroke(); g.fill(16);
+  g.rect(pad+14, 470, 64, 64); g.fill(255); g.ellipse(pad+14+32, 470+32, 28, 28);
+  g.fill(16); g.rect(pad+92, 470, 64, 64);
+  g.stroke(255); g.strokeWeight(1.2); g.noFill();
+  g.line(pad+92+12, 470+32, pad+92+52, 470+32); g.line(pad+92+32, 470+12, pad+92+32, 470+52);
+  g.noStroke(); g.fill(16); g.rect(pad+170, 470, 64, 64);
+  g.fill(255); g.beginShape(); g.vertex(pad+170+14,470+48); g.vertex(pad+170+32,470+14); g.vertex(pad+170+50,470+48); g.endShape(g.CLOSE);
+  g.fill(16); g.noStroke(); g.textAlign(g.LEFT, g.BASELINE);
+  g.textStyle(g.BOLD); g.textSize(86); g.textLeading(76);
+  g.text("TILE", pad+14, H-pad-18);
+  g.textSize(86); g.fill(225,36,28); g.text("KIT", pad+14+ g.textWidth("TILE")+12, H-pad-18);
+  g.fill(16); g.textStyle(g.NORMAL); g.textSize(11); g.textLeading(14);
+  g.text("p5.tilekit — vectors stay crisp  •  poster auto-matches canvas shape  •  Tile → PDF", pad+14, H-pad-2);
+  g.fill(16); g.textAlign(g.RIGHT, g.TOP); g.textSize(10);
+  g.text("Poster auto  →  Letter tiles", W-pad, pad+44);
+  g.text("DES 720A  FA26", W-pad, pad+56);
+}
+let tk;
+const sketch = (p) => {
+  p.setup = () => {
+    p.createCanvas(900, 700);
+    // Sizing tip: match common posters — 36×48 (3:4), 24×36 (2:3), 18×24 (3:4), 42×30 (7:5 landscape)
+    // e.g. createCanvas(900,1200) → 36×48, 900×1350 → 24×36, 900×600 → 42×30 landscape
+    p.pixelDensity(Math.min(window.devicePixelRatio||1, 2));
+    drawPoster(p);
+    tk = new Tilekit(p, { tile:'letter', dpi:150 });
+    tk.vector(drawPoster);
+    tk.ui();
+  };
+  p.draw = () => {};
+};
+new p5(sketch, document.getElementById('stage'));
+</script>
