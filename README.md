@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # p5.tilekit
 
 Any p5 canvas → any physical poster, tiled onto Letter/Tabloid (or A4/A3) and exported as a print-ready PDF. Vector-crisp — no bitmap upscaling.
@@ -190,3 +191,7 @@ src/p5.tilekit.js      # library (UMD + p5 addon)
 demo/index.html        # vector demo
 demo/src/p5.tilekit.js # copy for `demo/` as server root
 ```
+=======
+# p5-tilekit-standalone
+
+>>>>>>> ac1106cb38b95b679ad04ef43998ba01ffb7a591
