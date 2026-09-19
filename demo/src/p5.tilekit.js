@@ -521,7 +521,7 @@ class Tilekit {
         <span id="tk-stat" style="font-size:11px;color:#666;white-space:nowrap"></span>
         <label style="flex-direction:row;align-items:center;gap:5px;text-transform:none;letter-spacing:0;font-weight:400;color:#555;cursor:pointer"><input type="checkbox" id="tk-preview" checked> grid</label>
         <button id="tk-tile">Tile → PDF</button>
-        <button id="tk-png" class="tk-ghost">PNG</button>
+        <button id="tk-png" class="tk-ghost">Tile → PNG</button>
         <button id="tk-toggle" class="tk-toggle">▾ details</button>
       </div>
       <div class="tk-report" id="tk-report"></div>
@@ -606,7 +606,7 @@ class Tilekit {
     $('#tk-png').addEventListener('click', async ()=>{
       const btn=$('#tk-png'); btn.disabled=true; btn.textContent='…';
       try { apply(); await this.saveTiles('tile','png'); } catch(e){ alert(e.message); }
-      finally { btn.disabled=false; btn.textContent='PNG'; }
+      finally { btn.disabled=false; btn.textContent='Tile → PNG'; }
     });
     $('#tk-toggle').addEventListener('click', ()=>{
       bar.classList.toggle('tk-open');
