@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # p5.tilekit
 
 Any p5 canvas → any physical poster, tiled onto Letter/Tabloid (or A4/A3) and exported as a print-ready PDF. Vector-crisp — no bitmap upscaling.
@@ -176,22 +175,10 @@ Tilekit.createTilekit(p, opts) // factory
 
 ---
 
-## Local dev
-
-```bash
-# open demo with any static server, e.g.
-npx serve .   # then /demo/
-# or VS Code Live Server on `p5-tilekit/` or `p5-tilekit/demo/`
-```
-
-Gitea: `http://192.168.1.195:3000/matt/p5-tilekit.git`
+## Repository layout
 
 ```
 src/p5.tilekit.js      # library (UMD + p5 addon)
 demo/index.html        # vector demo
 demo/src/p5.tilekit.js # copy for `demo/` as server root
 ```
-=======
-# p5-tilekit-standalone
-
->>>>>>> ac1106cb38b95b679ad04ef43998ba01ffb7a591
